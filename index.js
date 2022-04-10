@@ -24,23 +24,29 @@ function getNewEmployee(choice) {
                 engineer.name = data.name_input;
                 engineer.id = data.id;
                 engineer.email = data.email;
-                engineer.officeNumber = data.office;
+                engineer.github = data.github;
                 employeeList.push(engineer);
-                console.log(employeeList);
                 getTeamMember();
             })
     }
     else if (choice === 'Intern') {
         choice = 'intern'
-        let intern = new Intern();
-        intern.getName(choice);
-        intern.getId(choice);
-        intern.getEmail(choice);
-        intern.getSchool(choice);
-        employeeList.push(intern)
-        getTeamMember();
+        const intern = new Intern();
+        questionArray = [];
+        questionArray.push(intern.getName(choice), intern.getId(choice), intern.getEmail(choice), intern.getSchool())
+        inquirer
+            .prompt(questionArray)
+            .then((data) => {
+                intern.name = data.name_input;
+                intern.id = data.id;
+                intern.email = data.email;
+                intern.school = data.school;
+                employeeList.push(intern);
+                getTeamMember();
+            })
     }
     else if (choice === "I don't want to add more team members") {
+        console.log(employeeList);
         return
     }
 }
