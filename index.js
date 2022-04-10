@@ -5,7 +5,7 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const template = require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML');
 const { resolve } = require('path');
 
 //Array that will be populated with Employee objects
@@ -46,6 +46,8 @@ function getNewEmployee(choice) {
             })
     }
     else if (choice === "I don't want to add more team members") {
+        const htmlString = generateHTML.generateHTML(employeeList);
+        writeToFile(htmlString);
         console.log(employeeList);
         return
     }
@@ -90,37 +92,6 @@ function init() {
             console.log(employeeList);
             getTeamMember();
         })
-     
-       
-            
-    
-    
-    // const p = new Promise((resolve, reject) => {
-    // resolve(manager)})
-    
-    // p
-    //     .then(() => {
-    //         manager.getName('manager')
-    //         return Promise.resolve(manager)})
-    //     .then(()=> {
-    //         manager.getId('manager')})
-    //     .catch((err) => console.error(err));
-        // .then((manager) => {
-        //     manager.getName('manager')
-        //     return manager
-        // })
-        // .then((manager) => {
-        //     manager.getId('manager')
-        //     return manager
-        // })
-    // manager.getName('manager')
-    //     .then( => manager.getId('manager'))
-    // manager.getRole()
-    // manager.getOfficeNumber();
-    // employeeList.push(manager);
-    // getTeamMember();
-    // htmlString = generateHTML(employeeList);
-    // writeToFile(htmlString);
 }
 
 init();

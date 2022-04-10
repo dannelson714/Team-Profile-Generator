@@ -1,14 +1,17 @@
 function generateHTML(employeeList) {
     let employeeString = "";
-    for (const employee of employeelist) {
+    for (const employee of employeeList) {
         if (employee.getRole() === 'Engineer') {
+            console.log('engineer');
             employeeString = employeeString + engineerHTML(employee);
         }
         if (employee.getRole() === 'Intern') {
+            console.log('intern');
             employeeString = employeeString + internHTML(employee);
         }
         if (employee.getRole() === 'Manager') {
-            employeeStrig = employeeString + managerHTML(employee);
+            console.log('manager');
+            employeeString = employeeString + managerHTML(employee);
         }
     }
 
@@ -35,6 +38,12 @@ function generateHTML(employeeList) {
           background-color: #f2f2f2;
           padding: 25px;
         }
+
+        .row {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
     
       </style>
     </head>
@@ -46,11 +55,11 @@ function generateHTML(employeeList) {
         </div>
     </div>
       
-    <div class="container text-center">    
-      <div class="row">
-        ${employeeString}
+    <div class="container text-center justify-content-center">    
+        <div class="row justify-content-around">
+            ${employeeString}
         </div>
-      </div>
+    </div>
     </div><br>
     </body>
     </html>`
@@ -60,54 +69,62 @@ function generateHTML(employeeList) {
 
 
 function engineerHTML(engineerObject) {
-htmlString = `<div class="col-12 col-md-4 col-lg-3 text-white mb-3">
-        <div class="card-header bg-primary">
-            <h2>${engineerObject.name}</h2>
-            <h5>Engineer</h5>
+htmlString = 
+       `<div class="card col-12 col-md-4 text-white mb-3 justify-content-center">
+            <div class="card-header bg-primary">
+                <h2>${engineerObject.name}</h2>
+                <h5>Engineer</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${engineerObject.id}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${engineerObject.email}">${engineerObject.email}</a></li>
+                    <li class="list-group-item">Github: <a href="https://github.com/${engineerObject.github}/">${engineerObject.github}</a></li>
+            </div>
         </div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${engineerObject.id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${engineerObject.email}">${engineerObject.email}</a></li>
-                <li class="list-group-item">Github: <a href="https://github.com/${engineerObject.github}/">${engineerObject.github}</a></li>
-            <h5 class="card-title">Primary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>`
+        `
 return htmlString;
 }
 
 function internHTML(internObject) {
-    htmlString = `<div class="col-12 col-md-4 col-lg-3 text-white mb-3">
+    htmlString = 
+       `<div class="card col-12 col-md-4 text-white mb-3 justify-content-center">
             <div class="card-header bg-primary">
                 <h2>${internObject.name}</h2>
-                <h5>Engineer</h5>
+                <h5>Intern</h5>
             </div>
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${internObject.id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${internObject.email}">${internObject.email}</a></li>
-                    <li class="list-group-item">School: ${engineerObject.github}</li>
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>`
+                    <li class="list-group-item">School: ${internObject.school}</li>
+            </div>
+        </div>    
+        `
     return htmlString;
     }
 
 function managerHTML(managerObject) {
-    htmlString = `<div class="col-12 col-md-4 col-lg-3 text-white mb-3">
+    htmlString = 
+       `<div class="card col-12 col-md-4 text-white mb-3 justify-content-center">
             <div class="card-header bg-primary">
                 <h2>${managerObject.name}</h2>
-                <h5>Engineer</h5>
+                <h5>Manager</h5>
             </div>
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${managerObject.id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${managerObject.email}">${managerObject.email}</a></li>
                     <li class="list-group-item">Office number: ${managerObject.officeNumber}</li>
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>`
+            </div>
+        </div>    
+        `
     return htmlString;
     }
 
-module.exports = generateHTML;
+module.exports = {
+    generateHTML,
+    managerHTML,
+    internHTML,
+    engineerHTML
+};
