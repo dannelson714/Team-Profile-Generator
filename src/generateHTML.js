@@ -110,4 +110,4 @@ function managerHTML(managerObject) {
     return htmlString;
     }
 
-module.exports = template;
+module.exports = generateHTML;
