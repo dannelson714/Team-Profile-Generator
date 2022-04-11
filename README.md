@@ -6,9 +6,9 @@ In this project I was tasked with building an enterprise team profile generator 
 
 The main problems I faced with this project were the use of back-end functions involving NodeJS, classes and constructors and the testing module, Jest. I had to initializing a package from NPM, as well as link multiple javascript files together for full functionality. Using Jest I had to ensure the app's functionality by performing a series of tests for each of my class files.
 
-The following clip is a walkthrough of the program functionality that I performed with Screencastify:
+Please follow the link below for a walkthrough of the program functionality that I performed with Screencastify:
 
-![./resources/Team_Profile_Walkthrough_Walkthrough.mp4](./resources/Team_Profile_Walkthrough_Walkthrough.mp4)
+https://drive.google.com/file/d/1Na6i1kpVyKjOL1q9WWK6-8nSAyauhrDa/view
 
 ## Installation
 
