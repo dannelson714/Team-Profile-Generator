@@ -44,6 +44,11 @@ function generateHTML(employeeList) {
           justify-content: center;
           flex-wrap: wrap;
         }
+
+        @media screen and (max-width: 991px) {
+            .row {
+              flex-direction: column;}
+        }
     
       </style>
     </head>
